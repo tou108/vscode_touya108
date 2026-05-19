@@ -1,0 +1,59 @@
+{
+  "name": "mhxx-snipe",
+  "version": "1.0.0",
+  "description": "MHXX 護石スナイプ統合ツール",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64",
+    "build:portable": "electron-builder --win portable --x64"
+  },
+  "build": {
+    "appId": "com.tou108.mhxx-snipe",
+    "productName": "MHXX護石スナイプツール",
+    "copyright": "Copyright © 2025",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "src/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MHXX護石スナイプツール"
+    },
+    "portable": {
+      "artifactName": "MHXX護石スナイプツール_portable.exe"
+    },
+    "extraResources": [
+      {
+        "from": "src/switch_bt.py",
+        "to": "src/switch_bt.py"
+      }
+    ]
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}
